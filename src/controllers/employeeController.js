@@ -277,7 +277,7 @@ const getUsers = async (req, res) => {
             return res.status(404).send({ status: false, message: "employees not found!" });
         }
 
-        res.status(200).send({ status: true, message: "Department list", data: employees });
+        res.status(200).send({ status: true, message: "Employee list", data: employees });
 
     } catch (err) {
         res.status(500).send({ status: false, message: "Internal Server Error", error: err.message });
