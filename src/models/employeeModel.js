@@ -31,7 +31,6 @@ const employeeSchema = new mongoose.Schema({
     department_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Department',
-        required: true
     }
 
 }, { timestamps: true })

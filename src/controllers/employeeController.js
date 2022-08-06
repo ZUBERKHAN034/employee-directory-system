@@ -271,12 +271,13 @@ const userUploadPicture = async (req, res) => {
 const getUsers = async (req, res) => {
     try {
 
-        const employees = await employeeModel.find().populate("department_id");;
+        const employees = await employeeModel.find().select({ __v: false, updatedAt: false }).populate('department_id','_id name createdAt');
+
         if (employees.length === 0) {
             return res.status(404).send({ status: false, message: "employees not found!" });
         }
 
-        res.status(200).send({ status: true, message: "Department list", data: departments });
+        res.status(200).send({ status: true, message: "Department list", data: employees });
 
     } catch (err) {
         res.status(500).send({ status: false, message: "Internal Server Error", error: err.message });
